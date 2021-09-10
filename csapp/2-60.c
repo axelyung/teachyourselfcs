@@ -27,8 +27,9 @@ int main() {
 }
 
 unsigned replace_byte(unsigned x, int i, unsigned char b) {
-    unsigned target = 0x000000FF << (i * 8);
-    unsigned zeroed = x & ~target;
-    unsigned replacement = b << (i * 8);
-    return zeroed + replacement;
+    unsigned itimes8 = i << 3;
+    unsigned mask = 0x000000FF << itimes8;
+    unsigned x_with_bytes_removed = x & ~mask;
+    unsigned replacement_bytes = b << itimes8;
+    return x_with_bytes_removed | replacement_bytes;
 }
