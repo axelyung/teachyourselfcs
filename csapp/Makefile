@@ -1,11 +1,8 @@
-# A basic makefile for "circle".
-
 CC = gcc
-CFLAGS = -Wall g -std=c99 
-LDFLAGS = -lm
+CFLAGS = -Wall -std=c99 -v
 
 build:
-	@ls -rt *.c | tail -1 | xargs gcc
+	@ls -rt *.c | tail -n2 | head -n1 | xargs -J % $(CC) $(CFLAGS) % utils.c
 	@echo
 	@./a.out
 	@rm ./a.out
