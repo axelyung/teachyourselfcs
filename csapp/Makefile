@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -std=c99 -v
+CFLAGS = -Wall -std=c99
 
 build:
 	@ls -rt *.c | tail -n2 | head -n1 | xargs -J % $(CC) $(CFLAGS) % utils.c
